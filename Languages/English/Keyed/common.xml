@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+    <BredinCaptivity.SettingsTitle>Bred in Captivity</BredinCaptivity.SettingsTitle>
+    <BredinCaptivity.ReductionLabel>Wildness reduction per generation: {0} percentage points</BredinCaptivity.ReductionLabel>
+    <BredinCaptivity.ReductionDesc>Each animal born to two colony-tamed parents of the same species is this many percentage points less wild than its more domesticated parent, down to 0%. A change applies to future offspring only; animals that already exist keep their current Wildness.</BredinCaptivity.ReductionDesc>
+    <BredinCaptivity.ResetDefault>Reset to default (8)</BredinCaptivity.ResetDefault>
+    <BredinCaptivity.StatExplanation>Bred in captivity (generation {0}): -{1} percentage points</BredinCaptivity.StatExplanation>
+    <BredinCaptivity.InspectString>Domesticated: generation {0}, wildness -{1} percentage points</BredinCaptivity.InspectString>
+</LanguageData>
