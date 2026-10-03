@@ -74,6 +74,7 @@
     <Compile Include="Mod.cs" />
     <Compile Include="ModSettings.cs" />
     <Compile Include="ModSettingsWindow.cs" />
+    <Compile Include="Patches\Patch_Pawn_RoamMtbDays.cs" />
     <Compile Include="Patches\Patch_PawnUtility_TrySpawnHatchedOrBornPawn.cs" />
     <Compile Include="StatPart_Domestication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

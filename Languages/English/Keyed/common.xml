@@ -4,6 +4,10 @@
     <BredinCaptivity.ReductionLabel>Wildness reduction per generation: {0} percentage points</BredinCaptivity.ReductionLabel>
     <BredinCaptivity.ReductionDesc>Each animal born to two colony-tamed parents of the same species is this many percentage points less wild than its more domesticated parent, down to 0%. A change applies to future offspring only; animals that already exist keep their current Wildness.</BredinCaptivity.ReductionDesc>
     <BredinCaptivity.ResetDefault>Reset to default (8)</BredinCaptivity.ResetDefault>
+    <BredinCaptivity.PenFreeLabel>Domesticated animals don't need pens (restart required)</BredinCaptivity.PenFreeLabel>
+    <BredinCaptivity.PenFreeTooltip>Colony animals with 10% Wildness or less are treated as area-controlled instead of pen-managed: they can be given allowed areas and are no longer taken to pens.
+
+Requires restarting the game to take effect.</BredinCaptivity.PenFreeTooltip>
     <BredinCaptivity.StatExplanation>Bred in captivity (generation {0}): -{1} percentage points</BredinCaptivity.StatExplanation>
     <BredinCaptivity.InspectString>Domesticated: generation {0}, wildness -{1} percentage points</BredinCaptivity.InspectString>
 </LanguageData>

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -19,6 +20,42 @@ namespace Bred_in_Captivity
         public static float RoundToStep(float value)
         {
             return Mathf.Round(value / ReductionStep) * ReductionStep;
+        }
+
+        // Vanilla TrainableUtility.TamenessCanDecay stops tameness decay at Wildness <= 0.101f.
+        public const float PenFreeWildnessCutoff = 0.101f;
+
+        // Game ticks a cached pen-free result stays valid; a Wildness change can take this long to show up.
+        private const int PenFreeCacheTicks = 60;
+
+        private static readonly Dictionary<Pawn, bool> penFreeCache = new Dictionary<Pawn, bool>();
+        private static int penFreeCacheTick = -1;
+
+        // True for a player-owned animal whose effective Wildness is low enough to be area-controlled instead of penned.
+        public static bool IsPenFree(Pawn pawn)
+        {
+            if (pawn == null || pawn.Dead || pawn.Faction == null || !pawn.Faction.IsPlayer || pawn.RaceProps == null || !pawn.RaceProps.Animal)
+            {
+                return false;
+            }
+            if (Current.Game == null || Find.TickManager == null)
+            {
+                return false;
+            }
+            // Wildness is not a cacheable stat, so the stat call below is a full recompute; Roamer is read very often.
+            // Cache per pawn and flush everything periodically, which also drops destroyed pawns.
+            int tick = Find.TickManager.TicksGame;
+            if (tick < penFreeCacheTick || tick - penFreeCacheTick >= PenFreeCacheTicks)
+            {
+                penFreeCache.Clear();
+                penFreeCacheTick = tick;
+            }
+            if (!penFreeCache.TryGetValue(pawn, out bool penFree))
+            {
+                penFree = pawn.GetStatValue(StatDefOf.Wildness, applyPostProcess: true) <= PenFreeWildnessCutoff;
+                penFreeCache[pawn] = penFree;
+            }
+            return penFree;
         }
 
         public static bool IsColonyTamed(Pawn pawn)

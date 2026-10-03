@@ -29,6 +29,14 @@ namespace Bred_in_Captivity
                 settings.ReductionPerGeneration = DomesticationUtility.DefaultReduction;
             }
 
+            listing.GapLine(12f);
+            bool penFree = settings.PenFreeDomesticated;
+            listing.CheckboxLabeled(
+                "BredinCaptivity.PenFreeLabel".Translate(),
+                ref penFree,
+                "BredinCaptivity.PenFreeTooltip".Translate());
+            settings.SetPenFreeDomesticated(penFree);
+
             listing.End();
         }
     }
